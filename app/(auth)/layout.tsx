@@ -1,0 +1,44 @@
+import Header from "@/components/Header"
+import Image from "next/image"
+import Link from "next/link"
+
+const Layout = ({children}:{children: React.ReactNode}) => {
+  return (
+    <main className="flex flex-col justify-between lg:flex-row h-screen bg-gray-900 relative overflow-hidden">
+      <section className="w-full lg:w-[45%] lg:h-screen px-6 lg:px-16 flex flex-col overflow-y-auto  [-ms-overflow-style:none]
+    [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden ">
+        <Link href='/' className="pt-6 lg:pt-8 mb-8 lg:mb-12">
+          <Image src='/assets/icons/logo.svg' alt="logo" width={140} height={32} className="h-8 w-auto"/>
+        </Link>
+
+        <div className="pb-6 lg:pb-8 flex-1">{children}</div>
+      </section>
+
+      <section className="w-full max-lg:border-t max-lg:border-gray-600 lg:w-[55%] lg:h-screen bg-gray-800 px-6 py-4 md:p-6 lg:py-12 lg:px-18 flex flex-col justify-start">
+            <div className="z-10 relative lg:mt-4 lg:mb-16">
+                    <blockquote className="text-sm md:text-xl lg:text-2xl font-medium text-gray-400 mb-1 md:mb-6 lg:mb-8">
+                        Signalist turned my watchlist into a winning list. The alerts are spot-on, and I feel more confident making moves in the market
+                    </blockquote>
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <cite className="auth-testimonial-author">- Ethan R.</cite>
+                            <p className="max-md:text-xs text-gray-500">Retail Investor</p>
+                        </div>
+                        <div className="flex items-center gap-0.5">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <Image src="/assets/icons/star.svg" alt="Star" key={star} width={20} height={20} className="w-5 h-5" />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex-1 relative">
+                    <Image src="/assets/images/dashboard.png" alt="Dashboard Preview" width={1440} height={1150} className="auth-dashboard-preview absolute top-0" />
+                </div>
+      </section>
+    </main>
+  )
+}
+
+export default Layout
