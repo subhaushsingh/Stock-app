@@ -1,8 +1,16 @@
 import Header from "@/components/Header"
+import { headers } from "next/headers"
 import Image from "next/image"
+import {redirect} from "next/navigation";
 import Link from "next/link"
+import {auth} from "@/lib/better-auth/auth";
 
-const Layout = ({children}:{children: React.ReactNode}) => {
+const Layout = async({children}:{children: React.ReactNode}) => {
+
+  const session = await auth.api.getSession({ headers: await headers() })
+
+    if(session?.user) redirect('/')
+
   return (
     <main className="flex flex-col justify-between lg:flex-row h-screen bg-gray-900 relative overflow-hidden">
       <section className="w-full lg:w-[45%] lg:h-screen px-6 lg:px-16 flex flex-col overflow-y-auto  [-ms-overflow-style:none]
