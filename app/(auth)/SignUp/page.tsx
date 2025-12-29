@@ -8,9 +8,12 @@ import { Button } from '@/components/ui/button'
 import { INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from '@/lib/constants'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import {useRouter} from 'next/navigation'
+import {toast} from "sonner";
+import {signUpWithEmail} from "@/lib/actions/auth.action";
 
 const SignUp = () => {
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -29,13 +32,17 @@ const SignUp = () => {
         mode: 'onBlur'
     },);
 
-  const onSubmit= async (data:SignUpFormData) => {
-    try {
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+   const onSubmit = async (data: SignUpFormData) => {
+        try {
+            const result = await signUpWithEmail(data);
+            if(result.success) router.push('/');
+        } catch (e) {
+            console.error(e);
+            toast.error('Sign in failed', {
+                description: e instanceof Error ? e.message : 'Failed to sign in.'
+            })
+        }
     }
-  }
 
   return (
     <>

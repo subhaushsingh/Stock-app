@@ -20,18 +20,21 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { LogOut } from 'lucide-react';
 import Navitems from './Navitems';
+import { signOut } from '@/lib/actions/auth.action';
 
 
 
-const Userdropdown = () => {
+
+const Userdropdown = ({user}:{user:User}) => {
 
     const router = useRouter();
 
     const handleSignOut = async()=>{
-      router.push('/sign-in');
+      await signOut();
+      router.push('/SignIn');
     }
 
-    const user = {name:'John',email:'sample@gmail.com'}; //sample data
+    
 
   return (
    <DropdownMenu>

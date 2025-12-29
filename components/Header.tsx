@@ -4,7 +4,7 @@ import React from 'react'
 import Navitems from './Navitems'
 import Userdropdown from './Userdropdown'
 
-const Header = () => {
+const Header = ({user}:{user:User}) => {
   return (
     <header className='sticky top-0 z-50 w-full h-17.5 bg-gray-800'>
       <div className='flex justify-between items-center px-6 py-4 text-gray-500 mx-auto max-w-screen-2xl  md:px-6 lg:px-8'>
@@ -14,7 +14,7 @@ const Header = () => {
         <nav className='hidden sm:block'>
             <Navitems/>
         </nav>
-          <Userdropdown/>
+          <Userdropdown user={user}/>
       </div>
     </header>
   )
