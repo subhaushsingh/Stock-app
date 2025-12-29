@@ -4,7 +4,7 @@ declare global {
         password: string;
     };
 
-    type SignUpFormData = {  
+    type SignUpFormData = {
         fullName: string;
         email: string;
         password: string;
@@ -215,6 +215,11 @@ declare global {
         threshold: number;
         changePercent?: number;
     };
+
+    type UserForNewsEmail = {
+    email: string;
+    name?: string;
+};
 }
 
 export {};
