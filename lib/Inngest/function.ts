@@ -4,6 +4,7 @@ import {NEWS_SUMMARY_EMAIL_PROMPT, PERSONALIZED_WELCOME_EMAIL_PROMPT} from "@/li
 import { getAllUsersForNewsEmail } from "../actions/user.action";
 import { getFormattedTodayDate } from "@/lib/utils";
 import { getNews } from "@/lib/actions/finnhub.action";
+import { getWatchlistSymbolsByEmail } from "@/lib/actions/watchlist.action";
 
 export const sendSignUpEmail = inngest.createFunction(
     { id: 'sign-up-email' },

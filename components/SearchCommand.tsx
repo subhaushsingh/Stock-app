@@ -28,19 +28,33 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [])
 
-  const handleSearch = async () => {
-    if (!isSearchMode) return setStocks(initialStocks);
+  useEffect(() => {
+  setStocks(initialStocks);
+}, [initialStocks]);
 
-    setLoading(true)
-    try {
-      const results = await searchStocks(searchTerm.trim());
-      setStocks(results);
-    } catch {
-      setStocks([])
-    } finally {
-      setLoading(false)
-    }
+  
+
+  const handleSearch = async () => {
+  setLoading(true);
+
+  try {
+    const results = await searchStocks(
+      isSearchMode ? searchTerm.trim() : undefined
+    );
+    setStocks(results);
+  } catch {
+    setStocks([]);
+  } finally {
+    setLoading(false);
   }
+};
+
+useEffect(() => {
+  if (open) {
+    handleSearch();
+  }
+}, [open]);
+
 
   const debouncedSearch = useDebounce(handleSearch, 300);
 
@@ -76,7 +90,7 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
           <CommandInput value={searchTerm} onValueChange={setSearchTerm} placeholder="Search stocks..." className="bg-gray-800! border-0 text-gray-400 placeholder:text-gray-500 focus:ring-0 text-base h-14 pr-10" />
           {loading && <Loader2 className="absolute right-12 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 animate-spin" />}
         </div>
-        <CommandList className="bg-gray-800! max-h-100">
+        <CommandList className="bg-gray-800! max-h-[400px]  ">
            {loading ? (
               <CommandEmpty className="py-6 bg-transparent! text-center text-gray-500">Loading stocks...</CommandEmpty>
       ) : displayStocks?.length === 0 ? (
