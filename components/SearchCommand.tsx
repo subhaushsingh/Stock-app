@@ -65,7 +65,13 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
           {label}
         </Button>
       )}
-      <CommandDialog open={open} onOpenChange={setOpen} className="bg-gray-800! lg:min-w-200 border-gray-600 fixed top-10 left-1/2 -translate-x-1/2 translate-y-10">
+      {open && (
+    <div
+      className="fixed inset-0 z-40 bg-black/40 backdrop-blur-md"
+      onClick={() => setOpen(false)}
+    />
+  )}
+      <CommandDialog open={open} onOpenChange={setOpen} className="z-50 bg-gray-800! lg:min-w-200 border-gray-600 fixed top-10 left-1/2 -translate-x-1/2 translate-y-10">
         <div className="bg-gray-800! border-b border-gray-600 relative">
           <CommandInput value={searchTerm} onValueChange={setSearchTerm} placeholder="Search stocks..." className="bg-gray-800! border-0 text-gray-400 placeholder:text-gray-500 focus:ring-0 text-base h-14 pr-10" />
           {loading && <Loader2 className="absolute right-12 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 animate-spin" />}
