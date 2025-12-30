@@ -25,7 +25,7 @@ import { signOut } from '@/lib/actions/auth.action';
 
 
 
-const Userdropdown = ({user}:{user:User}) => {
+const Userdropdown = ({user,initialStocks}:{user:User,intialStocks: StockWithWatchlistStatus[]}) => {
 
     const router = useRouter();
 
@@ -73,7 +73,7 @@ const Userdropdown = ({user}:{user:User}) => {
       Logout
     </DropdownMenuItem>
     <DropdownMenuSeparator className='bg-gray-700 hidden sm:block'/>
-    <nav className='sm:hidden'><Navitems/></nav>
+    <nav className='sm:hidden'><Navitems initialStocks={initialStocks}/></nav>
   </DropdownMenuContent>
 </DropdownMenu>
   )
