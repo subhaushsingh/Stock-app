@@ -25,7 +25,7 @@ import { signOut } from '@/lib/actions/auth.action';
 
 
 
-const Userdropdown = ({user,initialStocks}:{user:User,intialStocks: StockWithWatchlistStatus[]}) => {
+const Userdropdown = ({user,initialStocks}:{user:User,initialStocks: StockWithWatchlistStatus[]}) => {
 
     const router = useRouter();
 
