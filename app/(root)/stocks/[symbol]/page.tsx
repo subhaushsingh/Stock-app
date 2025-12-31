@@ -1,5 +1,6 @@
 import TradingViewWidget from "@/components/TradingViewWidget";
-import WatchlistButton from "@/components/WatchlistButton";
+import WatchlistButtonClient from "@/components/WatchlistButtonClient";
+
 import {
   SYMBOL_INFO_WIDGET_CONFIG,
   CANDLE_CHART_WIDGET_CONFIG,
@@ -9,9 +10,29 @@ import {
   COMPANY_FINANCIALS_WIDGET_CONFIG,
 } from "@/lib/constants";
 
+import { headers } from "next/headers";
+import { auth } from "@/lib/better-auth/auth";
+import { getWatchlistSymbolsByEmail } from "@/lib/actions/watchlist.action";
+
 export default async function StockDetails({ params }: StockDetailsPageProps) {
   const { symbol } = await params;
   const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
+  const upperSymbol = symbol.toUpperCase();
+
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const email = session?.user?.email;
+  const userId = session?.user?.id;
+
+  let isInWatchlist = false;
+  if (email) {
+    const symbols = await getWatchlistSymbolsByEmail(email);
+    isInWatchlist = symbols.includes(upperSymbol);
+  }
+
 
   return (
     <div className="flex min-h-screen p-4 md:p-6 lg:p-8">
@@ -40,9 +61,14 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
         </div>
 
         {/* Right column */}
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center justify-between">
-            <WatchlistButton symbol={symbol.toUpperCase()} company={symbol.toUpperCase()} isInWatchlist={false} />
+        <div className="flex flex-col gap-6 cursor-pointer">
+          <div className="flex items-center justify-between cursor-pointer">
+            <WatchlistButtonClient
+              symbol={upperSymbol}
+              company={upperSymbol}
+              userId={userId}
+              isInWatchlist={isInWatchlist}
+            />
           </div>
 
           <TradingViewWidget
