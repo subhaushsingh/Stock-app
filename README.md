@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📈 Signalist – Stock Market Analysis Platform
 
-## Getting Started
+![Dashboard](screenshots/Dashboard.png)
 
-First, run the development server:
+Signalist is a modern stock market analysis web application that provides real-time market insights, interactive visualizations, and personalized watchlists. The platform is designed to help users track market trends, analyze stocks efficiently, and make informed financial decisions using reliable data and rich visual tools.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 Live Preview
+> _Add deployment link here (Vercel / Render)_
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Stack
 
-## Learn More
+### Frontend
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- shadcn/ui
 
-To learn more about Next.js, take a look at the following resources:
+### Backend
+- Next.js API Routes
+- Node.js runtime
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Database
+- MongoDB
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Authentication
+- better-auth (token-based authentication)
+- React-side session caching
 
-## Deploy on Vercel
+### Market Data & Visualization
+- TradingView Widgets (Charts, Heatmap, Market Overview)
+- Finnhub API (stock prices & news)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Features
+
+### ✅ Implemented Features
+- User authentication (sign up / login)
+- Secure token-based session handling
+- Market overview dashboard with sector-based performance
+- Daily personalized email with market stories tailored to the user’s watchlist
+- Interactive stock heatmap with color-coded movement
+- Advanced stock charts powered by TradingView
+- Stock search functionality
+- Personalized watchlist (add/remove stocks)
+- Persistent user data using MongoDB
+- Fully responsive dark-themed UI
+
+### 🚧 Planned Features
+- API rate limiting for better security
+- Server-side & Redis-based caching
+- Background data revalidation
+- WebSocket-based real-time updates
+- Performance optimization for large datasets
+
+---
+
+
+
+### Dashboard
+- Displays overall market trends
+- Sector-wise performance tracking
+- Interactive time range selection (1D, 1M, 1Y, etc.)
+
+
+### Stock Heatmap
+- Visual market representation across sectors
+- Size indicates market cap
+- Color indicates price movement
+
+
+### Watchlist
+- Save favorite stocks
+- User-specific persistent storage
+- Quick access to tracked assets
+
+---
+
