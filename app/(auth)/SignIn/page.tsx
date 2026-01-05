@@ -49,7 +49,7 @@ const SignIn = () => {
                     placeholder="sample@gmail.com"
                     register={register}
                     error={errors.email}
-                    validation={{ required: 'Email is required', pattern: /^\w+@\w+\.\w+$/ }}
+                    validation={{ required: 'Email is required', pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/}}
                 />
 
                 <InputFields
