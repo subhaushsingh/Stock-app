@@ -7,7 +7,8 @@ Signalist is a modern stock market analysis web application that provides real-t
 ---
 
 ## 🔗 Live Preview
-> _Add deployment link here (Vercel / Render)_
+[signalist-one-pink.vercel.app](https://signalist-one-pink.vercel.app)
+
 
 ---
 
