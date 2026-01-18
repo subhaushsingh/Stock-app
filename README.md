@@ -42,17 +42,16 @@ Signalist is a modern stock market analysis web application that provides real-t
 ### ✅ Implemented Features
 - User authentication (sign up / login)
 - Secure token-based session handling
+- API rate limiting for better security
 - Market overview dashboard with sector-based performance
 - Daily personalized email with market stories tailored to the user’s watchlist
 - Interactive stock heatmap with color-coded movement
 - Advanced stock charts powered by TradingView
 - Stock search functionality
 - Personalized watchlist (add/remove stocks)
-- Persistent user data using MongoDB
-- Fully responsive dark-themed UI
+
 
 ### 🚧 Planned Features
-- API rate limiting for better security
 - Server-side & Redis-based caching
 - Background data revalidation
 - WebSocket-based real-time updates
